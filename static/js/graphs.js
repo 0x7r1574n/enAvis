@@ -33,11 +33,11 @@ function makeGraphs(error, projectsJson) {
 		else return "Male";
 	});
 	var typeDim = ndx.dimension(function(d) {
-		if (d["type"] == "E") return "Early Admission";
-		else return "Upper-Division Admission";
+		if (d["type"] == "E") return "Early";
+		else return "Upper-Division";
 	});
 	var admissionDim = ndx.dimension(function(d) {
-		if (d["decision"] <= 3 ) return "Accepted";
+		if (d["decision"] <= 3 ) return "Admitted";
 		else return "Denied";
 	});
 	var enrollmentDim = ndx.dimension(function(d) {
@@ -91,31 +91,44 @@ function makeGraphs(error, projectsJson) {
 	//	.formatNumber(d3.format(".3s"));
 
 	distChart
-		.width(800)
+		.width(600)
 		.height(300)
 		.margins({top: 10, right: 50, bottom: 30, left: 50})
 		.dimension(gpaDim)
 		.group(gpaGroup)
 		.transitionDuration(500)
 		.centerBar(true)
-		.gap(65)
-		.x(d3.scale.linear().domain([minGpa, 4.1]))
+		.gap(40)
+		.x(d3.scale.linear().domain([1.5, 4.1]))
 		.elasticY(true)
 		.xAxisLabel("GPA")
+		.yAxisLabel("Number of Applicants")
 		.xUnits(function() {return 10;})
 		.xAxis().tickFormat();
+	var genderColorScale = d3.scale.ordinal().range(["#f6546a", "#003366"]);
+	var YesOrNoColorScale = d3.scale.ordinal().range(["#006400", "#cc0000"]);
 
 	genderChart
 		.width(250)
 		.height(220)
 		.radius(100)
-		.innerRadius(30)
 		.dimension(genderDim)
 		.group(genderGroup)
+		.colors(genderColorScale)
+		.label(function (d) {
+            if (genderChart.hasFilter() && !genderChart.hasFilter(d.key)) {
+                return d.key + '(0%)';
+            }
+            var label = d.key;
+            if (all.value()) {
+                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+            }
+            return label;
+        })
 		.title(function(d) {return d.value});
 
 	deptChart
-		.width(800)
+		.width(600)
 		.height(300)
 		.margins({top: 10, right: 50, bottom: 30, left: 50})
 		.dimension(deptDim)
@@ -125,6 +138,7 @@ function makeGraphs(error, projectsJson) {
 		.x(d3.scale.ordinal().domain(depts))
 		.elasticY(true)
 		.xAxisLabel("Department")
+		.yAxisLabel("Number of Applicants")
 		.xUnits(dc.units.ordinal)
 		.xAxis().tickFormat();
 
@@ -132,7 +146,6 @@ function makeGraphs(error, projectsJson) {
 		.width(250)
 		.height(220)
 		.radius(100)
-		.innerRadius(30)
 		.dimension(typeDim)
 		.group(typeGroup)
 		.title(function(d) {return d.value});
@@ -141,18 +154,38 @@ function makeGraphs(error, projectsJson) {
 		.width(250)
 		.height(220)
 		.radius(100)
-		.innerRadius(30)
 		.dimension(admissionDim)
 		.group(admissionGroup)
+		.colors(YesOrNoColorScale)
+		.label(function (d) {
+            if (admissionChart.hasFilter() && !admissionChart.hasFilter(d.key)) {
+                return d.key + '(0%)';
+            }
+            var label = d.key;
+            if (all.value()) {
+                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+            }
+            return label;
+        })
 		.title(function(d) {return d.value});
 
 	enrollmentChart
 		.width(250)
 		.height(220)
 		.radius(100)
-		.innerRadius(30)
 		.dimension(enrollmentDim)
 		.group(enrollmentGroup)
+		.colors(YesOrNoColorScale)
+		.label(function (d) {
+            if (enrollmentChart.hasFilter() && !enrollmentChart.hasFilter(d.key)) {
+                return d.key + '(0%)';
+            }
+            var label = d.key;
+            if (all.value()) {
+                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+            }
+            return label;
+        })
 		.title(function(d) {return d.value});
 	//resourceTypeChart
      //   .width(300)
