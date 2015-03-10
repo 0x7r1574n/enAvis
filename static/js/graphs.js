@@ -105,7 +105,7 @@ function makeGraphs(error, projectsJson) {
 		.colors(genderColorScale)
 		.legend(dc.legend())
 		.label(function (d) {
-            if (admissionChart.hasFilter() && !admissionChart.hasFilter(d.key)) {
+            if (genderChart.hasFilter() && !genderChart.hasFilter(d.key)) {
                 return '0%';
             }
             if (all.value()) {
