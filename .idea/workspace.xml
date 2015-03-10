@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea8bf0d1-8c88-471f-ae06-2475b26582e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+    <list default="true" id="ea8bf0d1-8c88-471f-ae06-2475b26582e0" name="Default" comment="favicon added.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="enAvis.iws" />
@@ -45,8 +43,8 @@
       <file leaf-file-name="enAvis.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/enAvis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14328358" vertical-offset="0" max-vertical-offset="1005">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.53731346" vertical-offset="0" max-vertical-offset="1005">
+              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -528,7 +526,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425964850089</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="favicon added.">
+      <created>1425965685211</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1425965685211</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -598,7 +602,8 @@
     </option>
     <MESSAGE value="added color codes and percentage for pie charts. adjusted chart sizes." />
     <MESSAGE value="Facelift. Added stacked bar, reset buttons, removed unecessary graphs, added navigation, modified author names, template change." />
-    <option name="LAST_COMMIT_MESSAGE" value="Facelift. Added stacked bar, reset buttons, removed unecessary graphs, added navigation, modified author names, template change." />
+    <MESSAGE value="favicon added." />
+    <option name="LAST_COMMIT_MESSAGE" value="favicon added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -837,8 +842,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/enAvis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14328358" vertical-offset="0" max-vertical-offset="1005">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.53731346" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
