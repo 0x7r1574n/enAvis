@@ -8,9 +8,7 @@ from bson.json_util import dumps
 app = Flask(__name__)
 
 URI = 'mongodb://demo:demo@ds043957.mongolab.com:43957/enavis'
-DEPTS = ['A A', 'BIO E', 'CE', 'CEE', 'CHEM E', 'CS', 'E E', 'HCDE', 'I E', 'M E', 'MS E', 'PSE']
-FIELDS = {'dept': True, 'tot_gpa': True, 'decision': True, 'prereq_gpa': True, 'year': True, 'gender': True,
-          'type': True, 'qtr_id': True, 'enrolled': True}
+FIELDS = {'dept': True, 'tot_gpa': True, 'decision': True, 'year': True, 'gender': True, 'enrolled': True}
 
 @app.route("/")
 def index():

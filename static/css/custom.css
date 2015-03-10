@@ -1,12 +1,15 @@
-#number-projects-nd {
-    font-size: 60px;
+.dc-chart .pie-slice {
+    fill: black;
 }
 
-#total-donations-nd {
-    font-size: 60px;
+div.dc-chart {
+    text-align: center;
+    float: none;
 }
 
+.reset {
+    float: right;
+}
 .dc-chart g.row text {
     fill: black;
-    font-size: 12px;
 }
