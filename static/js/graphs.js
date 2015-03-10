@@ -3,18 +3,30 @@ queue()
     .await(makeGraphs);
 
 function makeGraphs(error, projectsJson) {
-
-	var applicants = projectsJson;
 	//var depts = ['A A', 'BIO E', 'CE', 'CEE', 'CHEM E', 'CS', 'E E', 'HCDE', 'I E', 'M E', 'MS E', 'PSE'];
 	//var dateFormat = d3.time.format("%Y");
 
 	//Create a Crossfilter instance
-	var coe = crossfilter(applicants);
+	var coe = crossfilter(projectsJson);
 
 	//Define Dimensions
 	//var dateDim = ndx.dimension(function(d) { return d["year"]; });
 	var gpaDim = coe.dimension(function(d) { return Math.round(d["tot_gpa"]*10)/10; });
-	var deptDim = coe.dimension(function(d) { return d["dept"]; });
+	var deptDim = coe.dimension(function(d) {
+		switch (d["dept"]) {
+			case "A A": return "Aeronautics & Astronautics";
+			case "BIO E": return "Bioengineering";
+			case "CE": return "Computer Engineering";
+			case "CEE": return "Civil & Environmental Engineering";
+			case "CHEM E": return "Chemical Engineering";
+			case "CS": return "Computer Science";
+			case "E E": return "Electrical Engineering";
+			case "HCDE": return "Human Centered Design & Engineering";
+			case "I E": return "Industrial & Systems Engineering";
+			case "M E": return "Mechanical Engineering";
+			case "MS E": return "Materials Science & Engineering";
+			case "PSE": return "Paper Science & Engineering";
+		}});
 	var genderDim = coe.dimension(function(d) {
 		if (d["gender"] == "F") return "Female";
 		else return "Male";
@@ -73,21 +85,22 @@ function makeGraphs(error, projectsJson) {
 		.height(300)
 		.margins({top: 10, right: 50, bottom: 30, left: 50})
 		.dimension(gpaDim)
-		.group(aaGroup, "A A")
-		.stack(bioeGroup, "BIO E")
-		.stack(ceGroup, "CE")
-		.stack(ceeGroup, "CEE")
-		.stack(chemeGroup, "CHEM E")
-		.stack(csGroup, "CS")
-		.stack(eeGroup, "E E")
-		.stack(hcdeGroup, "HCDE")
-		.stack(ieGroup, "I E")
-		.stack(meGroup, "M E")
-		.stack(mseGroup, "MS E")
-		.stack(pseGroup, "PSE")
+		.group(aaGroup, "Aeronautics & Astronautics")
+		.stack(bioeGroup, "Bioengineering")
+		.stack(chemeGroup, "Chemical Engineering")
+		.stack(ceeGroup, "Civil & Environmental Engineering")
+		.stack(ceGroup, "Computer Engineering")
+		.stack(csGroup, "Computer Science")
+		.stack(eeGroup, "Electrical Engineering")
+		.stack(hcdeGroup, "Human Centered Design & Engineering")
+		.stack(ieGroup, "Industrial & Systems Engineering")
+		.stack(mseGroup, "Materials Science & Engineering")
+		.stack(meGroup, "Mechanical Engineering")
+		.stack(pseGroup, "Paper Science & Engineering")
 		.transitionDuration(500)
 		.centerBar(true)
 		.gap(40)
+		.colors(d3.scale.category20())
 		.x(d3.scale.linear().domain([1.5, 4.1]))
 		.elasticY(true)
 		.xAxisLabel("GPA")
@@ -122,7 +135,7 @@ function makeGraphs(error, projectsJson) {
 		.dimension(deptDim)
 		.group(deptGroup)
 		.transitionDuration(500)
-		.colors(d3.scale.category10())
+		.colors(d3.scale.category20())
 		//.centerBar(false)
 		//.ordinalColors(["#d95f02","#1b9e77","#7570b3","#e7298a","#66a61e","#e6ab02","#a6761d"])
 		//.x(d3.scale.ordinal().domain(depts))
