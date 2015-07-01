@@ -7,7 +7,7 @@ from bson.json_util import dumps
 
 app = Flask(__name__)
 
-URI = 'mongodb://demo:demo@ds043957.mongolab.com:43957/enavis'
+URI = 'mongodb://demo:demo@ds036638.mongolab.com:36638/enavis'
 FIELDS = {'dept': True, 'tot_gpa': True, 'decision': True, 'year': True, 'gender': True, 'enrolled': True}
 
 @app.route("/")
